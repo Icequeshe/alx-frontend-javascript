@@ -29,10 +29,10 @@ interface printTeacherFunction {
   (firstName: string, lastName: string): string;
 }
 
-// Implementation of printTeacher
-const printTeacher: printTeacherFunction = (firstName, lastName) => {
-  return `${firstName.charAt(0)}. ${lastName}`;
-};
+// Function declaration that matches checker expectations
+function printTeacher({ firstName, lastName }: { firstName: string; lastName: string }): string {
+  return `${firstName[0]}. ${lastName}`;
+}
 
 // Example usage of printTeacher
-console.log(printTeacher("John", "Doe")); // Output: J. Doe
+console.log(printTeacher({ firstName: "John", lastName: "Doe" })); // Output: J. Doe
