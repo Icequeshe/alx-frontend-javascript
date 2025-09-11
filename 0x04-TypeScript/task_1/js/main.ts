@@ -8,13 +8,13 @@ interface Teacher {
   [propName: string]: any; // allow additional attributes
 }
 
-// Directors interface extending Teacher
-interface Directors extends Teacher {
+// Director interface extending Teacher
+interface Director extends Teacher {
   numberOfReports: number;
 }
 
-// Example usage
-const director1: Directors = {
+// Example usage of Director
+const director1: Director = {
   firstName: 'John',
   lastName: 'Doe',
   location: 'London',
@@ -23,3 +23,16 @@ const director1: Directors = {
 };
 
 console.log(director1);
+
+// Interface for printTeacher function
+interface printTeacherFunction {
+  (firstName: string, lastName: string): string;
+}
+
+// Implementation of printTeacher
+const printTeacher: printTeacherFunction = (firstName, lastName) => {
+  return `${firstName.charAt(0)}. ${lastName}`;
+};
+
+// Example usage of printTeacher
+console.log(printTeacher("John", "Doe")); // Output: J. Doe
