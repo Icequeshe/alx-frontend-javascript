@@ -1,58 +1,40 @@
 // Teacher interface
-interface Teacher {
+export interface Teacher {
   readonly firstName: string;
   readonly lastName: string;
   fullTimeEmployee: boolean;
   yearsOfExperience?: number;
   location: string;
-  [propName: string]: any; // allow additional attributes
+  [propName: string]: any;
 }
 
-// Director interface extending Teacher
-interface Director extends Teacher {
+// Directors interface extending Teacher
+export interface Directors extends Teacher {
   numberOfReports: number;
 }
 
-// Example usage of Director
-const director1: Director = {
-  firstName: 'John',
-  lastName: 'Doe',
-  location: 'London',
-  fullTimeEmployee: true,
-  numberOfReports: 17,
-};
-
-console.log(director1);
-
-// Interface for printTeacher function
-interface printTeacherFunction {
+// printTeacher function interface
+export interface printTeacherFunction {
   (firstName: string, lastName: string): string;
 }
 
-// Function declaration
-function printTeacher(firstName: string, lastName: string): string {
-  return `${firstName}. ${lastName}`;
+// function using destructuring for { firstName, lastName }
+export function printTeacher({ firstName, lastName }: { firstName: string; lastName: string }): string {
+  return `${firstName.charAt(0)}. ${lastName}`;
 }
 
-console.log(printTeacher("John", "Doe"));
-
-// ------------------------------
-// StudentClass Task
-// ------------------------------
-
-// Constructor interface
-interface StudentConstructor {
+// Student interfaces
+export interface StudentClassConstructor {
   new (firstName: string, lastName: string): StudentClassInterface;
 }
 
-// Class methods interface
-interface StudentClassInterface {
+export interface StudentClassInterface {
   workOnHomework(): string;
   displayName(): string;
 }
 
-// Implementation of StudentClass
-class StudentClass implements StudentClassInterface {
+// StudentClass implementation
+export class StudentClass implements StudentClassInterface {
   private firstName: string;
   private lastName: string;
 
@@ -69,8 +51,3 @@ class StudentClass implements StudentClassInterface {
     return this.firstName;
   }
 }
-
-// Example usage
-const student = new StudentClass("Alice", "Johnson");
-console.log(student.displayName());   // Output: Alice
-console.log(student.workOnHomework()); // Output: Currently working
