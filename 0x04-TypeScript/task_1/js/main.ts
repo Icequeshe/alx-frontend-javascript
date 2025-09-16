@@ -34,7 +34,7 @@ export interface StudentClassInterface {
 }
 
 // StudentClass implementation
-export class StudentClass implements StudentClassInterface {
+class StudentClass {
   private firstName: string;
   private lastName: string;
 
